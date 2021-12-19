@@ -40,6 +40,6 @@ int main()
 
     printf("Anagram Sequences: ");
     AnagramSequences(a,b);
-    printf("\n");
+   
     return 0;
 }
