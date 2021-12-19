@@ -13,7 +13,7 @@ int main()
     char temp1, temp2;
     a = (char*)calloc(WORD,sizeof(char));
     b = (char*)calloc(TXT,sizeof(char));
-    printf("enter your string: \n");
+    
 
     for(i = 0; i < WORD;i++)
     {
