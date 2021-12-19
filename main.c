@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "my_func.c"
+#include "func.h"
 #define TXT 1024
 #define WORD 30
 
@@ -29,13 +29,15 @@ int main()
         if(b[j] == '~')break;
     }
     b[j] = '\0';
+
     printf("Gematria Sequences: ");
     GematriaSequences(a,b);
     printf("\n");
-    //printf("the Gematria Sequences is: %s\n",GematriaSequences(a,b));
+
     printf("Atbash Sequences: ");
     AtbashSequnces(a,b);
     printf("\n");
+
     printf("Anagram Sequences: ");
     AnagramSequences(a,b);
     printf("\n");
