@@ -13,8 +13,10 @@ int main()
     char temp1, temp2;
     a = (char*)calloc(WORD,sizeof(char));
     b = (char*)calloc(TXT,sizeof(char));
-    
-
+    if(a == NULL || b == NULL){
+        printf("EROR");
+        exit(0);
+    }
     for(i = 0; i < WORD;i++)
     {
         temp1 =getchar();
@@ -40,6 +42,7 @@ int main()
 
     printf("Anagram Sequences: ");
     AnagramSequences(a,b);
-   
+    free(a);
+    free(b);
     return 0;
 }
