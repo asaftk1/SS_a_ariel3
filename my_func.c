@@ -14,12 +14,15 @@ int gematria(char s){
     }
 }
 int StringGematriaFullValue(char* s){
+    char* temp;
+    temp = (char*)calloc(strlen(s),sizeof(char));
+    strcpy(temp,s);
     int sum =0, counter =0;
-    for(int i = 0; i < strlen(s); i++,counter++){
+    for(int i = 0; i < strlen(temp); i++,counter++){
         for(char j = 'a'; j <= 'z'; j++){
-            s[counter] = tolower(s[counter]);
-            if(j == s[counter]) sum += gematria(s[counter]);
-            if(s[counter] == '\t' || s[counter] == '\n' )return sum;
+            temp[counter] = tolower(temp[counter]);
+            if(j == temp[counter]) sum += gematria(temp[counter]);
+            if(temp[counter] == '\t' || temp[counter] == '\n' )return sum;
         }
     }
     return sum;
@@ -63,8 +66,8 @@ void GematriaSequences(char* a,char* b){
     }
     temp[strlen(temp)-1]= '\0';
     printf("%s",temp);
-    free(c);
-    //free(temp);
+    // free(c);
+    // free(temp);
 }
 
 
@@ -126,7 +129,6 @@ void AtbashSequnces(char* a, char* b){
         {
             strcat(temp3,check);
             strcat(temp3,"~");
-            // printf("%s~",check);
             free(check);
             check = (char*)malloc(WORD*sizeof(char));
             i = (i- strlen(a));
