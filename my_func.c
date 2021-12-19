@@ -16,6 +16,11 @@ int gematria(char s){
 int StringGematriaFullValue(char* s){
     char* temp;
     temp = (char*)calloc(strlen(s),sizeof(char));
+    if(temp==NULL){
+        printf("EROR");
+        exit(0);
+    } 
+    
     strcpy(temp,s);
     int sum =0, counter =0;
     for(int i = 0; i < strlen(temp); i++,counter++){
@@ -34,7 +39,10 @@ void GematriaSequences(char* a,char* b){
     char* c, *temp;
     c = (char*)calloc(WORD,sizeof(char));
     temp = (char*)calloc(WORD,sizeof(char));
-
+    if(temp==NULL || c ==NULL){
+        printf("EROR");
+        exit(0);
+    }
     for(i = 0; i<strlen(b); i++){
         check = tolower(b[i]);
         if(b[i] == '0'||b[i] == '1'||b[i] == '2'||b[i] == '3'||b[i] == '4'||b[i] == '5'||b[i] == '6'||b[i] == '7'||b[i] == '8'||b[i] == '9')i++;
@@ -53,12 +61,20 @@ void GematriaSequences(char* a,char* b){
             i= (i- strlen(c)) +1 ;
             free(c);
             c= (char*)calloc(TXT,sizeof (char));
+            if(c==NULL){
+            printf("EROR");
+            exit(0);
+    }
 
         }
         else if(sum > wordGematriaValue){
            i = (i- strlen(c)) +1 ;
             free(c);
             c= (char*)calloc(TXT,sizeof (char));
+            if(c==NULL){
+            printf("EROR");
+            exit(0);
+            }
             counter=0;
             sum=0;
         }
@@ -66,8 +82,8 @@ void GematriaSequences(char* a,char* b){
     }
     temp[strlen(temp)-1]= '\0';
     printf("%s",temp);
-    // free(c);
-    // free(temp);
+     free(c);
+     free(temp);
 }
 
 
@@ -75,7 +91,10 @@ char* Atbash(char* a){
     int i=0;
     char* str;
     str = (char*)malloc(WORD*sizeof(char));
-
+     if(str==NULL){
+            printf("EROR");
+            exit(0);
+            }
     while(a[i]!='\0')
     {
         if(!((a[i]>=0&&a[i]<65)||(a[i]>90&&a[i]<97)||(a[i]>122&&a[i]<=127)))
@@ -96,6 +115,10 @@ char* Atbash(char* a){
 char* reversAtbash(char* a){
     char* str;
     str = (char*)malloc(WORD*sizeof(char));
+     if(str==NULL){
+            printf("EROR");
+            exit(0);
+            }
     char temp;
     int i, len;
     len = strlen(a);
@@ -117,7 +140,11 @@ void AtbashSequnces(char* a, char* b){
     temp = Atbash(a);
     temp2 = reversAtbash(temp);
     temp3 = (char*)calloc(TXT,sizeof(char));
-    // printf("%ld\n",strlen(b));
+    if(temp==NULL ||temp2 ==NULL ||temp3==NULL || check ==NULL){
+        printf("EROR");
+        exit(0);
+    }
+    
     for(int i = 0; i<strlen(b);i++){
         while(temp[0] != b[i]&&temp2[0] != b[i] && i<strlen(b))i++;
         for(j = 0; j<strlen(a);j++) {
@@ -131,14 +158,22 @@ void AtbashSequnces(char* a, char* b){
             strcat(temp3,"~");
             free(check);
             check = (char*)malloc(WORD*sizeof(char));
+            if(check ==NULL){
+            printf("EROR");
+            exit(0);
+    }
             i = (i- strlen(a));
         }
         else
         {
             free(check);
             check = (char*)malloc(WORD*sizeof(char));
+            if(check ==NULL){
+            printf("EROR");
+            exit(0);
+            }
             i = (i-strlen(a));
-            //printf("%d\n",i);
+            
         }
     }
     free(check);
@@ -148,14 +183,14 @@ void AtbashSequnces(char* a, char* b){
     free(temp3);
 
 }
-//swap function
+
 void swap(char *a, char *b)
 {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-// bubble sort function
+
 void bubbleSort(char array[], int n)
 {
     int i, j;
@@ -170,6 +205,10 @@ void AnagramSequences(char* a, char*b){
     temp = (char*)malloc(TXT*sizeof(char));
     temp2 = (char*)malloc(TXT*sizeof(char));
     temp3 = (char*)calloc(TXT,sizeof(char));
+    if(temp==NULL ||temp2 ==NULL ||temp3==NULL){
+        printf("EROR");
+        exit(0);
+    }
     for(i = 0; i<strlen(b); i++){
         for(j=0; j<strlen(a); j++){
             if(b[i]== ' ')i++;
@@ -186,12 +225,20 @@ void AnagramSequences(char* a, char*b){
             strcat(temp3,"~");
             free(temp);
             temp = (char*)malloc(TXT*sizeof(char));
+            if(temp==NULL){
+            printf("EROR");
+            exit(0);
+        }
             i = (i-strlen(a));
         }
         else
         {
             free(temp);
             temp = (char*)malloc(TXT*sizeof(char));
+             if(temp==NULL){
+            printf("EROR");
+            exit(0);
+        }
             i = (i-strlen(a));
         }
     }
